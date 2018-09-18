@@ -4,12 +4,17 @@
   :items="items"
   :fields="fields"
   :beSelectedIdArr="beSelectedIdArr"
-></Test>
+>
+<template slot="first_name" slot-scope="data">{{data}}</template>
+</Test>
+  
 </div>
 </template>
 
 <script>
 import Test from './test.vue';
+import BB from './b.vue';
+import huhu from './a.vue'
 const items = [
   { isActive: true, age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
   { isActive: false, age: 21, first_name: 'Larsen', last_name: 'Shaw' },
@@ -25,11 +30,12 @@ const fields = [
         ]
 export default {
   name: 'HelloWorld',
-  components:{Test},
+  components:{Test,huhu,BB},
   data () {
     return {
       items:items,
       fields:fields,
+      
       beSelectedIdArr:[40],
       msg: 'Welcome to Your Vue.js App'
     }

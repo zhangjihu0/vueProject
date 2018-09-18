@@ -8,13 +8,18 @@
             全选
             </b-form-checkbox>
         </template>
-        <template slot="allSelected" slot-scope="data">
-            <b-form-checkbox 
-                @change="handleItemSelected(data.item)"
-                v-model="status"
-                :value="data.item.age"
-            >
-            </b-form-checkbox>
+        <!-- <template slot="first_name" slot-scope="data">
+            sadasda
+        </template> -->
+
+        <template 
+            v-for="item in fields" 
+            :slot="item.key" 
+            slot-scope="data"
+        >
+            <slot :name='item.key' :data="data">
+                {{item.key}}
+            </slot>
         </template>
     </b-table>
     <b-button  @click="handleSave" variant='primary'>
@@ -73,7 +78,8 @@ export default {
         message:'qwqewq',
         allStatus:false,
         status:[],
-        selectedRow:[]
+        selectedRow:[],
+        filterFields:['allSelected'],
       }
   },
   mounted(){
